@@ -1,0 +1,300 @@
+/* ── CareLume AI — Activate Account Page ────────────────────────── */
+
+.activate-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background-color: var(--cl-neutral-50);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.activate-top-bar {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.activate-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cl-neutral-700);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.activate-back-link:hover {
+  color: var(--cl-teal-800);
+}
+
+.activate-container {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  margin: 50px auto 24px;
+}
+
+.activate-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.activate-logo-link {
+  display: inline-flex;
+  margin-bottom: 6px;
+  transition: transform 0.2s ease;
+}
+
+.activate-logo-link:hover {
+  transform: scale(1.04);
+}
+
+.activate-brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+  letter-spacing: -0.02em;
+}
+
+.activate-brand-sub {
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-600);
+  margin-top: 2px;
+}
+
+/* Card */
+.activate-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--cl-neutral-200);
+  border-radius: var(--cl-radius-xl);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.07), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (min-width: 480px) {
+  .activate-card {
+    padding: 32px 28px;
+  }
+}
+
+.activate-header {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.activate-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+  margin-bottom: 6px;
+}
+
+.activate-header p {
+  font-size: 0.84375rem;
+  color: var(--cl-neutral-600);
+  line-height: 1.5;
+}
+
+.activate-info-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--cl-teal-50);
+  border: 1px solid var(--cl-teal-200);
+  border-radius: var(--cl-radius-md);
+  font-size: 0.78125rem;
+  color: var(--cl-teal-900);
+  font-weight: 500;
+}
+
+.activate-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--cl-error-bg);
+  border: 1px solid var(--cl-error-border);
+  border-radius: var(--cl-radius-md);
+  font-size: 0.8125rem;
+  color: var(--cl-error);
+  line-height: 1.4;
+}
+
+.activate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activate-btn {
+  padding: 11px 18px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.activate-spinner {
+  animation: spin 0.7s linear infinite;
+}
+
+.activate-card-footer {
+  text-align: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--cl-neutral-150);
+  margin-top: 6px;
+}
+
+.activate-card-footer p {
+  font-size: 0.78125rem;
+  color: var(--cl-neutral-500);
+  margin-bottom: 4px;
+}
+
+.activate-footer-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cl-teal-700);
+  text-decoration: underline;
+}
+
+.activate-footer-link:hover {
+  color: var(--cl-teal-800);
+}
+
+/* Verified Box */
+.verified-patient-box {
+  background: var(--cl-neutral-50);
+  border: 1px solid var(--cl-teal-200);
+  border-radius: var(--cl-radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.verified-badge-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #15803d;
+  margin-bottom: 2px;
+}
+
+.verified-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.verified-lbl {
+  color: var(--cl-neutral-500);
+}
+
+.verified-val {
+  color: var(--cl-neutral-900);
+}
+
+.verified-patient-id {
+  font-family: var(--cl-font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  background: var(--cl-teal-50);
+  color: var(--cl-teal-800);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--cl-teal-200);
+}
+
+/* Success View */
+.activate-success-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.activate-success-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--cl-success-bg);
+  color: var(--cl-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cl-success-border);
+}
+
+.activate-success-view h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cl-neutral-900);
+  margin: 0;
+}
+
+.activate-success-view p {
+  font-size: 0.875rem;
+  color: var(--cl-neutral-600);
+  line-height: 1.5;
+}
+
+.patient-id-highlight-box {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--cl-teal-50);
+  border: 1px solid var(--cl-teal-200);
+  border-radius: var(--cl-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.highlight-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cl-teal-800);
+}
+
+.highlight-code {
+  font-family: var(--cl-font-mono, monospace);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cl-teal-800);
+  letter-spacing: 0.05em;
+}
+
+.activation-success-info {
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-600);
+}

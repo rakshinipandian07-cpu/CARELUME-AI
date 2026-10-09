@@ -1,0 +1,529 @@
+/* ── Appointments Management & Booking ────────────────────────────── */
+
+.appointments-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Toast alert fixed at top right */
+.appointment-toast {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--cl-shadow-lg);
+  max-width: 420px;
+}
+
+/* Header */
+.appointments-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.appointments-title-group h1 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+  margin-bottom: 4px;
+}
+
+.appointments-title-group p {
+  font-size: 0.875rem;
+  color: var(--cl-neutral-500);
+}
+
+.appointments-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Filters & Search Bar */
+.appointments-filters-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--cl-neutral-0);
+  padding: 16px;
+  border-radius: var(--cl-radius-lg);
+  border: 1px solid var(--cl-neutral-200);
+  box-shadow: var(--cl-shadow-xs);
+}
+
+@media (min-width: 860px) {
+  .appointments-filters-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.appointments-search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 380px;
+}
+
+.appointments-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cl-neutral-400);
+  pointer-events: none;
+}
+
+.appointments-search-input {
+  padding-left: 36px;
+}
+
+.appointments-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.apt-filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--cl-radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--cl-neutral-200);
+  background: var(--cl-neutral-50);
+  color: var(--cl-neutral-700);
+  cursor: pointer;
+  transition: all var(--cl-transition-fast);
+  white-space: nowrap;
+}
+
+.apt-filter-tab:hover {
+  background: var(--cl-neutral-100);
+  color: var(--cl-neutral-900);
+}
+
+.apt-filter-tab.active {
+  background: var(--cl-teal-700);
+  border-color: var(--cl-teal-700);
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(17, 85, 70, 0.22);
+}
+
+.apt-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: var(--cl-neutral-200);
+  color: var(--cl-neutral-700);
+}
+
+.apt-filter-tab.active .apt-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff !important;
+}
+
+.apt-tab-count.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.apt-tab-count.info {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Empty State Card */
+.empty-state-card {
+  padding: 48px 24px;
+  text-align: center;
+}
+
+/* Appointments Grid Layout */
+.appointments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .appointments-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+}
+
+/* Individual Appointment Card */
+.appointment-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid var(--cl-neutral-200);
+  border-radius: var(--cl-radius-lg);
+  background: var(--cl-neutral-0);
+  transition: transform var(--cl-transition-fast), box-shadow var(--cl-transition-fast), border-color var(--cl-transition-fast);
+}
+
+.appointment-card:hover {
+  box-shadow: var(--cl-shadow-md);
+  border-color: var(--cl-neutral-300);
+}
+
+.appointment-card.is-reschedule-proposed {
+  border: 1.5px solid #0284c7;
+  background: #f0f9ff;
+}
+
+.appointment-card.is-pending-approval {
+  border: 1.5px solid #f59e0b;
+  background: #fffdf5;
+}
+
+/* Card Header */
+.appointment-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.appointment-date-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.apt-date-icon {
+  color: var(--cl-teal-600);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.apt-primary-date {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+  line-height: 1.3;
+}
+
+.apt-primary-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cl-teal-700);
+  margin-top: 2px;
+}
+
+/* Card Body */
+.appointment-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.apt-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-700);
+}
+
+.apt-meta-icon {
+  color: var(--cl-neutral-400);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.apt-patient-id-tag {
+  font-family: var(--cl-font-mono);
+  color: var(--cl-teal-800);
+  font-weight: 600;
+}
+
+.apt-notes-row {
+  background: var(--cl-neutral-50);
+  padding: 8px 10px;
+  border-radius: var(--cl-radius-sm);
+  border: 1px solid var(--cl-neutral-150);
+}
+
+.apt-notes-text {
+  font-size: 0.75rem;
+  color: var(--cl-neutral-600);
+}
+
+/* Reschedule Proposal Alert Box */
+.apt-reschedule-box {
+  background: #ffffff;
+  border: 1px solid #bae6fd;
+  border-radius: var(--cl-radius-md);
+  padding: 12px 14px;
+  margin-top: 4px;
+  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.08);
+}
+
+.apt-reschedule-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0369a1;
+  font-size: 0.8125rem;
+  margin-bottom: 8px;
+}
+
+.apt-reschedule-details {
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-700);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.apt-staff-message {
+  font-style: italic;
+  color: #0c4a6e;
+  margin-top: 4px;
+  padding: 4px 8px;
+  background: #f0f9ff;
+  border-radius: var(--cl-radius-sm);
+}
+
+.apt-patient-reschedule-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Decline Alert Box */
+.apt-decline-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 8px 10px;
+  border-radius: var(--cl-radius-sm);
+  color: #991b1b;
+  font-size: 0.75rem;
+}
+
+/* Card Footer Actions */
+.appointment-card-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--cl-neutral-150);
+}
+
+.apt-staff-approval-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.apt-status-change-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.apt-status-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cl-neutral-500);
+}
+
+.apt-status-select {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  width: auto;
+  min-width: 120px;
+}
+
+/* Danger Button Outline */
+.btn-danger-outline {
+  background: transparent;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: var(--cl-radius-md);
+  cursor: pointer;
+  transition: all var(--cl-transition-fast);
+}
+
+.btn-danger-outline:hover {
+  background: #fef2f2;
+  border-color: #dc2626;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #ffffff;
+  border: 1px solid #dc2626;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--cl-radius-md);
+  cursor: pointer;
+  transition: all var(--cl-transition-fast);
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+/* Badges */
+.badge-reschedule {
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+/* ── Modals ──────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+  background: var(--cl-neutral-0);
+  border-radius: var(--cl-radius-xl);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--cl-shadow-xl);
+  animation: fadeInScale 0.25s ease;
+}
+
+.modal-content-sm { max-width: 440px; }
+.modal-content-md { max-width: 520px; }
+.modal-content-lg { max-width: 680px; }
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--cl-neutral-100);
+}
+
+.modal-header h2 {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+}
+
+.modal-subtitle {
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-500);
+  margin-top: 2px;
+}
+
+.modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cl-neutral-100);
+}
+
+.modal-warning-text {
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-600);
+  line-height: 1.45;
+}
+
+.required-star {
+  color: var(--cl-error);
+}
+
+.apt-modal-original-box {
+  background: var(--cl-neutral-50);
+  border: 1px solid var(--cl-neutral-200);
+  border-radius: var(--cl-radius-md);
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+  color: var(--cl-neutral-700);
+}
+
+/* Time Slot Selection Grid */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 480px) {
+  .time-slots-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.time-slot-pill {
+  padding: 8px 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--cl-radius-md);
+  border: 1px solid var(--cl-neutral-200);
+  background: var(--cl-neutral-50);
+  color: var(--cl-neutral-700);
+  cursor: pointer;
+  transition: all var(--cl-transition-fast);
+}
+
+.time-slot-pill:hover {
+  background: var(--cl-teal-50);
+  border-color: var(--cl-teal-300);
+  color: var(--cl-teal-800);
+}
+
+.time-slot-pill.selected {
+  background: var(--cl-teal-700);
+  border-color: var(--cl-teal-700);
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(17, 85, 70, 0.25);
+}
+

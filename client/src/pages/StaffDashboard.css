@@ -1,0 +1,133 @@
+/* ── Staff Dashboard ─────────────────────────────────────────────── */
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.staff-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.staff-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cl-neutral-100);
+}
+
+.staff-list-item:last-child {
+  border-bottom: none;
+}
+
+.staff-list-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--cl-radius-md);
+  background: var(--cl-teal-50);
+  color: var(--cl-teal-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.staff-list-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.staff-list-primary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cl-neutral-800);
+}
+
+.staff-list-secondary {
+  font-size: 0.75rem;
+  color: var(--cl-neutral-500);
+}
+
+.staff-list-question {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+
+/* ── Search ─────────────────────────────────────────────────────── */
+.staff-search-wrapper {
+  position: relative;
+}
+
+.staff-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cl-neutral-400);
+  pointer-events: none;
+}
+
+.staff-search-input {
+  padding: 7px 12px 7px 32px;
+  font-size: 0.8125rem;
+  width: 200px;
+}
+
+/* ── Quick Actions ──────────────────────────────────────────────── */
+.staff-quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.staff-quick-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--cl-neutral-0);
+  border: 1px dashed var(--cl-neutral-200);
+  border-radius: var(--cl-radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--cl-neutral-600);
+  text-decoration: none;
+  transition: all var(--cl-transition-fast);
+}
+
+.staff-quick-action:hover {
+  border-color: var(--cl-teal-300);
+  color: var(--cl-teal-700);
+  background: var(--cl-teal-50);
+  border-style: solid;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .staff-quick-actions {
+    flex-direction: column;
+  }
+
+  .staff-search-input {
+    width: 140px;
+  }
+
+  .staff-list-question {
+    max-width: 160px;
+  }
+}

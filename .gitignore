@@ -1,0 +1,44 @@
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+coverage/
+.vite/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Cache and temporary files
+.cache/
+*.tmp
+*.temp
+*.swp
+*.tsbuildinfo
+
+# Local database files and backups
+*.db
+*.bak
+*.backup
+
+# Private uploaded files
+server/uploads/*
+!server/uploads/.gitkeep

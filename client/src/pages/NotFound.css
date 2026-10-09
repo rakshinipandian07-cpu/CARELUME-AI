@@ -1,0 +1,57 @@
+/* ── 404 Page ─────────────────────────────────────────────────────── */
+
+.not-found-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.not-found-card {
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--cl-radius-full);
+  background: var(--cl-teal-50);
+  color: var(--cl-teal-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.not-found-code {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--cl-teal-800);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.not-found-card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cl-neutral-900);
+  margin-bottom: 8px;
+}
+
+.not-found-card p {
+  font-size: 0.875rem;
+  color: var(--cl-neutral-600);
+  margin-bottom: 24px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 12px;
+}
